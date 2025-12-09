@@ -1,0 +1,15 @@
+services:
+  order-db:
+    image: postgres:15-alpine
+    container_name: order-db-dev
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: orderdb
+    ports:
+      - "5434:5432" # Porta diferente para não conflitar com auth ou product db
+    volumes:
+      - order_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  order_postgres_data:
