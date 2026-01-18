@@ -43,6 +43,9 @@ public class Order {
     @UpdateTimestamp
     private OffsetDateTime updatedAt;
     
+    @Column(unique = true)
+    private String idempotencyKey;
+    
     public void addItem(OrderItem item) {
         items.add(item);
         item.setOrder(this);
